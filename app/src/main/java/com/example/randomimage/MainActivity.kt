@@ -32,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         val networkClient = NetworkClient()
         networkClient.initClient()
 
-        networkClient.getDogImage()
+        networkClient.getDogImage() { imageAdress ->
+            Picasso.get().load(imageAdress).into(binding.myDogImage)
+        }
+
+        networkClient.getDogImage() { imageAdress ->
+            Picasso.get().load(imageAdress).into(binding.myDogImage2)
+        }
     }
 }

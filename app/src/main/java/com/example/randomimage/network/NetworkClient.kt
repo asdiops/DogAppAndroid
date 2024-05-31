@@ -29,10 +29,11 @@ class NetworkClient {
         service = retrofit.create(DogAPI::class.java)
     }
 
-    fun getDogImage() {
+    fun getDogImage(callback: (String) -> Unit) {
         service?.getRandomImage()?.enqueue(object : Callback<DogAnswer> {
             override fun onResponse(call: Call<DogAnswer>, response: Response<DogAnswer>) {
                 Log.i("Запрос к серверу", "Ответ успешный ${response.body()}")
+                callback.invoke(response.body()?.message ?: "")                                 //Здесь показывает случайную картинку
             }
 
             override fun onFailure(call: Call<DogAnswer>, t: Throwable) {
