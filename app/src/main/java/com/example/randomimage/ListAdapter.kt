@@ -29,7 +29,6 @@ class ListAdapter : Adapter<ListAdapter.MyVeiwHolder>() {
         holder.bind(myData[position])
     }
 
-
     class MyVeiwHolder(
         private val binding: ItemListBinding
     ): ViewHolder(binding.root) {
